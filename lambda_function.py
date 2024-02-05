@@ -12,7 +12,7 @@ def lambda_handler(event, context):
     db_connector = DatabaseConnector()
     try:
         db_connector.connect()
-        processor = Processing(event, db_connector)
+        processor = Processing(event['data'], db_connector)
         processor.run()
     except Exception as e:
         print(f'ERROR {e}')
